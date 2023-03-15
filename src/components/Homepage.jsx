@@ -1,7 +1,8 @@
 import React from 'react'
 import "../css/Homepage.css"
-import Navbar from './navbar'
+
 import heroImage from "../assets/images/heroImage.png"
+import Navbar from './Navbar'
 
 export default function Homepage(props) {
   // Theme Color Setter
