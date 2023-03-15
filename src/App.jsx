@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import Homepage from './components/Homepage';
+import Homepage from './components/Homepage/Homepage';
 import "./css/Global.css"
 
 
@@ -21,10 +21,10 @@ function App() {
 
   return (
     <div className="App">
-      <Homepage
-          theme_toggle = {theme_toggle}
-          isCheckedTheme = {isCheckedTheme}
-      />
+        <Homepage
+            theme_toggle = {theme_toggle}
+            isCheckedTheme = {isCheckedTheme}
+        />
     </div>
   )
 }

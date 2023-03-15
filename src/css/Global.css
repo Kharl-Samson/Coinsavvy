@@ -19,6 +19,7 @@ button:hover{
 
 /* Navigation Bar */
 nav{
+    z-index: 1;
     position: sticky;
     top: 0;
     background-color: #ffff;

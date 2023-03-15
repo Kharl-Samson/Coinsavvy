@@ -1,11 +1,13 @@
+/* Hero Content */
 .homePageContainer{
     padding: 100px 0;
+    padding-bottom: 150px;
     width: 100%;
     min-height: 60vh;
     background-color: #F7F7F7;
 }
 .homePageContainer .container{
-    margin: 0% auto;
+    margin: 0 auto;
     display: flex;
     gap: 30px;
     align-items: center;
@@ -26,8 +28,6 @@
     font-weight: 400;
     color: #9A9A9A;
 }
-
-
 .homePageContainer .container .heroDetails button {
     margin-top: 30px;
     font-size: 1rem;
@@ -71,13 +71,194 @@
 .homePageContainer .container .heroDetails button:active {
     transform: scale(0.97);
 }
-
 /* Hero Image */
 .homePageContainer .container img{
     height: 450px;
     width: auto;
 }
 
+/* Card Content */
+.cardMainContainer{
+    width: 100%;
+    padding-bottom: 30px;
+}
+.cardContainer{
+    position: relative;
+    top: -70px;
+    margin: 0 auto;
+    margin-top: -70px;
+    min-height: 280px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #ffff;
+}
+.cardContainer .contentBox{
+    margin: 0 auto;
+    width: 95%;
+    min-height: 280px;
+}
+.cardContainer .contentBox .top{
+    padding: 20px 0;
+    min-height: 30px;
+    width: 100%;
+    border-bottom: 1px solid #d4d4d4;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cardContainer .contentBox .top .category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #252831;
+    border-radius: 20px;
+    font-size: 1rem;
+    height: 30px;
+    padding: 0 20px;
+    font-weight: 600;
+}
+.cardContainer .contentBox .top .category:hover{
+    cursor: pointer;
+}
+.cardContainer .contentBox .top .categoryActive{
+    background-color: #3772FF;
+    color: #ffff !important;
+}
+.cardContainer .contentBox .bottom{
+    padding: 15px 0;
+    width: 100%;
+    min-height: 180px;
+    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cardContainer .contentBox .bottom .box{
+    height: 160px;
+    width: 190px;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cardContainer .contentBox .bottom .box .label{
+    display: flex;
+    align-items: center;
+}
+.cardContainer .contentBox .bottom .box .label img{
+    height: 25px;
+    width: auto;
+    margin-right: 10px;
+}
+.cardContainer .contentBox .bottom .box .label p{
+    color: #252831;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cardContainer .contentBox .bottom .box .label p span{
+    font-size: .9rem;
+    margin-left: 5px;
+    color: #8d8c8c;
+}
+.cardContainer .contentBox .bottom .box .totalPrice{
+    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.cardContainer .contentBox .bottom .box .subDetails{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: capitalize;
+}
+.cardContainer .contentBox .bottom .box .subDetails span{
+    font-size: 1rem;
+    color: #8d8c8c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cardContainer .contentBox .bottom .box .subDetails .percentage{
+    font-size: .8rem;
+    font-weight: 600;
+    color: #ffff;
+    border-radius: 5px;
+    background-color: #58bd7d;
+    padding: 3px 10px;
+}
+
+/* Market Content - top 10 */
+.marketMainContent .marketContent{
+    margin: 0 auto;
+
+    padding-bottom: 100px;
+}
+.marketMainContent .marketContent .headerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.marketMainContent .marketContent .headerContainer .title{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.marketMainContent .marketContent .headerContainer .seeAll{
+    font-size: 1rem;
+    font-weight: 600;
+    transition: .3s;
+    text-decoration: underline;
+}
+.marketMainContent .marketContent .headerContainer .seeAll:hover{
+    color: #3772FF !important;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.marketMainContent .marketContent .tableHeader{
+    margin-top: 15px;
+    width: 100%;
+    border-bottom: 2px solid #d4d4d4;
+    display: flex;
+    align-items: center;
+}
+.marketMainContent .marketContent .tableHeader .col{
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+.marketMainContent .marketContent .tableHeader .col span{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #777e91;
+}
+.marketMainContent .marketContent .tableHeader .col1{
+    width: calc(5% - 40px);
+}
+.marketMainContent .marketContent .tableHeader .col2{
+    width: calc(5% - 40px);
+}
+.marketMainContent .marketContent .tableHeader .col3{
+    width: calc(25% - 40px);
+}
+.marketMainContent .marketContent .tableHeader .col4{
+    width: calc(20% - 40px);
+}
+.marketMainContent .marketContent .tableHeader .col5{
+    width: calc(10% - 40px);
+}
+.marketMainContent .marketContent .tableHeader .col6{
+    width: calc(20% - 40px);
+}
+.marketMainContent .marketContent .tableHeader .col7{
+    width: calc(15% - 40px);
+}
 /*RESPONSIVE*/
 @media screen and (max-width: 1201px) {
     .homePageContainer .container img{
@@ -95,6 +276,9 @@
     }
 }
 @media screen and (max-width: 1001px) {
+    .homePageContainer{
+        padding-bottom: 200px;;
+    }
     .homePageContainer .container{
         flex-direction: column;
         justify-content: center;
@@ -116,7 +300,15 @@
     }
 }
 @media screen and (max-width: 551px) {
+    .homePageContainer{
+        padding-top: 70px;
+    }
     .homePageContainer .container img{
         width: 70%;
+    }
+}
+@media screen and (max-width: 401px) {
+    .homePageContainer .container .heroDetails .title{
+        font-size: 2rem;
     }
 }
