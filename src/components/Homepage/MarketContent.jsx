@@ -14,6 +14,10 @@ import axios from 'axios';
 // MUI Skeleton
 import Skeleton from '@mui/material/Skeleton';
 
+// MUI Snackbar
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 // Test Data
 import test_marketData from './_TestData_/marketData';
 
@@ -28,12 +32,26 @@ const LightTooltip = styled(({ className, ...props }) => (
     },
   }));
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
 export default function MarketContent(props) {
     // Theme Color Setter
     const background_1 = props.isCheckedTheme ? "darkBG1" : "lightBG1"
     const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
 
+    // Snackbar
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+    const showSnackbar = () => {
+      setOpenSnackbar(true);
+    };
+    const closeSnackbar = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpenSnackbar(false);
+    };
 
     //Chart settings
     const options = {
@@ -58,27 +76,26 @@ export default function MarketContent(props) {
         },
     };
 
-
     // Loading data variable
     const [isLoadingMarketData, setisLoadingMarketData] = useState(true); 
-
-    const [marketData, setMarketData] = useState(null);  
-    const loadMarketData = async () =>{
-      const result = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=10&page=1&sparkline=true&price_change_percentage=7d')
-      setMarketData(result.data)
-      console.log(result)
-      setisLoadingMarketData(false)
-
-    //   const result = test_marketData
-    //   setMarketData(result)
-    //   setisLoadingMarketData(false)
+    const [marketData, setMarketData] = useState(null); 
+    const loadMarketData = async () => {
+        try {
+            closeSnackbar()
+            const result = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=10&page=1&sparkline=true&price_change_percentage=7d');
+            setMarketData(result.data);
+            setisLoadingMarketData(false);
+        } 
+        catch (error) {
+            showSnackbar()
+            const result = test_marketData
+            setMarketData(result)
+            setisLoadingMarketData(false)
+        }
     };
-    useEffect(() => {
-      // Remove mo to pag real data na
-    //   setTimeout(()=>{
-        loadMarketData();
-    //   },1000)
 
+    useEffect(() => {
+        loadMarketData();
     }, [isLoadingMarketData])
 
 
@@ -90,11 +107,11 @@ export default function MarketContent(props) {
       ))
     : marketData && marketData.length > 0
     ? marketData.map((res, index) => {
-
+        // Setting up current price in USD
         const currentPrice = res.current_price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         const percentage24 = res.price_change_percentage_24h.toFixed(2)
         const marketCap = res.market_cap.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-
+        // Creating datasets for line graph
         const changes7days = res.sparkline_in_7d.price
         const coinGraph = []
 
@@ -104,7 +121,7 @@ export default function MarketContent(props) {
                 coinGraph.push(percentageChange.toFixed(2))
             }
         })
-     
+    
         return (
             <div className='row' key={index}>
                 <div className='col col1'>
@@ -161,13 +178,9 @@ export default function MarketContent(props) {
       })
   : null;
 
-
   return (
     <div className={`marketMainContent ${background_1}`}>
-    
-
         <div className='marketContent everyContainerWidth'>
-
             <div className='headerContainer'>
                 <p className={`title ${textColor_1}`}>Market Update</p>
                 <p className={`seeAll ${textColor_1}`}>See All Coins</p>
@@ -187,8 +200,12 @@ export default function MarketContent(props) {
             <div className='tableBody'>
                     {marketDataMapping}
             </div>     
-
         </div>
+
+        {/* Snackbar */}
+        <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={closeSnackbar}>
+          <Alert onClose={closeSnackbar} severity="warning">API can't handle too many request, Try again later!</Alert>
+        </Snackbar>
     </div>
   )
 }

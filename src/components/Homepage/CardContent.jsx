@@ -10,6 +10,10 @@ import axios from 'axios'
 import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip'
 
+// MUI Snackbar
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 // Test Data
 import test_cardData from './_TestData_/cardData'
 
@@ -23,15 +27,33 @@ const LightTooltip = styled(({ className, ...props }) => (
       fontSize: 11,
     },
   }));
+  
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  
 
 export default function CardContent(props) {
     // Theme Color Setter
     const background_1 = props.isCheckedTheme ? "darkBG1" : "lightBG1"
     const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
 
+    // Snackbar
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+    const showSnackbar = () => {
+      setOpenSnackbar(true);
+    };
+    const closeSnackbar = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpenSnackbar(false);
+    };
+  
     // Loading data variable
     const [isLoadingCardData, setisLoadingCardData] = useState(true);
-    //Select Category in Card
+    // Select Category in Card
     const [activeCategory, setActiveCategory] = useState('Crypto');
     function selectCategory(category) {
       setisLoadingCardData(true)
@@ -39,21 +61,22 @@ export default function CardContent(props) {
     } 
 
     const [cardData, setCardData] = useState(null);  
-    const loadCardData = async () =>{
-      const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`)
-      setCardData(result.data.coins)
-      setisLoadingCardData(false)
-
-      // const result = test_cardData
-      // setCardData(result.coins)
-      // setisLoadingCardData(false)
+    const loadCardData = async () => {
+      try {
+        closeSnackbar()
+        const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`)
+        setCardData(result.data.coins)
+        setisLoadingCardData(false)
+      } 
+      catch (error) {
+        showSnackbar()
+        const result = test_cardData
+        setCardData(result.coins)
+        setisLoadingCardData(false)
+      }
     };
     useEffect(() => {
-      // Remove mo to pag real data na
-      // setTimeout(()=>{
         loadCardData();
-      // },1000)
-
     }, [activeCategory, isLoadingCardData])
     
     const cardDataMapping = isLoadingCardData
@@ -89,8 +112,6 @@ export default function CardContent(props) {
         })
     : null;
   
-  
-
   return (
     <div className={`cardMainContainer ${background_1}`}>
       <div className={`cardContainer everyContainerWidth ${background_1}`}>
@@ -113,6 +134,12 @@ export default function CardContent(props) {
 
           </div>
       </div>
+
+      {/* Snackbar */}
+      <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={closeSnackbar}>
+        <Alert onClose={closeSnackbar} severity="warning">API can't handle too many request, Try again later!</Alert>
+      </Snackbar>
+      
     </div>
   )
 }
