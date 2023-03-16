@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 
+// Test Data
+import test_cardData from './_TestData_/cardData';
+
 // MUI Skeleton
 import Skeleton from '@mui/material/Skeleton';
 
@@ -27,27 +30,34 @@ export default function CardContent(props) {
     const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
 
     // Loading data variable
-    const [isLoading, setIsLoading] = useState(false);// True dapat 
+    const [isLoadingCardData, setisLoadingCardData] = useState(true); 
     //Select Category in Card
     const [activeCategory, setActiveCategory] = useState('Crypto');
     function selectCategory(category) {
-      setIsLoading(true)
+      setisLoadingCardData(true)
       setActiveCategory(category)
     } 
 
-    const cardData = [1,2,3,4]
-    // const [cardData, setCardData] = useState(null);  
-    // const loadCardData = async () =>{
-    //   const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`);
-    //   setCardData(result.data.coins);
-    //   setIsLoading(false)
-    // };
-    // useEffect(() => {
-    //   loadCardData();
-    // }, [activeCategory])
-  
+    const [cardData, setCardData] = useState(null);  
+    const loadCardData = async () =>{
+      // const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`)
+      // setCardData(result.data.coins)
+      // setisLoadingCardData(false)
+
+      const result = test_cardData
+      setCardData(result.coins)
+      setisLoadingCardData(false)
+    };
+    useEffect(() => {
+      // Remove mo to pag real data na
+      setTimeout(()=>{
+        loadCardData();
+      },1000)
+
+    }, [activeCategory, isLoadingCardData])
+
     
-    const cardDataMapping = isLoading
+    const cardDataMapping = isLoadingCardData
       ? Array.from({ length: 4 }, (_, index) => (
           <div className='box' key={index}>
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px'}}>
@@ -61,35 +71,21 @@ export default function CardContent(props) {
       : cardData && cardData.length > 0
       ? cardData.slice(0, 4).map((res, index) => {
           return (
-          // <div className='box' key={index}>
-          //   <div className='label'>
-          //     <img src={res.thumb} alt='Coin Image'/>
-          //     <LightTooltip title={res.name}>
-          //       <p className={textColor_1}>{res.name} <span>PHP</span></p>
-          //     </LightTooltip>
-          //   </div>
-          //   <p className={`totalPrice ${textColor_1}`}>{res.symbol}</p>
-          //   <div className='subDetails'>
-          //     <span>{res.api_symbol}</span>
-          //     <LightTooltip title={`Rank no.${res.market_cap_rank}`}>
-          //     <div className='percentage'>{res.market_cap_rank}</div>
-          //     </LightTooltip>
-          //   </div>
-          // </div>
-  
-            <div className='box' key={index}>
-              <div className='label'>
-                <img src='https://assets.coingecko.com/coins/images/9805/thumb/Tu1_NI3s_%281%29.png' alt='Coin Image'/>
-                <LightTooltip title='Koda Cryptocurrency'>
-                  <p className={textColor_1}>Koda Cryptocurrency</p>
-                </LightTooltip>
-              </div>
-              <p className={`totalPrice ${textColor_1}`}>KODA <span></span></p>
-              <div className='subDetails'>
-                <span>koda-finance</span>
-                <div className='percentage'>444</div>
-              </div>
+          <div className='box' key={index}>
+            <div className='label'>
+              <img src={res.thumb} alt='Coin Image'/>
+              <LightTooltip title={res.name}>
+                <p className={textColor_1}>{res.name} <span>PHP</span></p>
+              </LightTooltip>
             </div>
+            <p className={`totalPrice ${textColor_1}`}>{res.symbol}</p>
+            <div className='subDetails'>
+              <span>{res.api_symbol}</span>
+              <LightTooltip title={`Rank no.${res.market_cap_rank}`}>
+              <div className='percentage'>{res.market_cap_rank}</div>
+              </LightTooltip>
+            </div>
+          </div>
           );
         })
     : null;
