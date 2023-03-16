@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react'
 
-// Test Data
-import test_cardData from './_TestData_/cardData';
-
 // MUI Skeleton
-import Skeleton from '@mui/material/Skeleton';
+import Skeleton from '@mui/material/Skeleton'
 
 // Axios
-import axios from 'axios';
+import axios from 'axios'
 
 // MUI Tooltip
-import { styled } from '@mui/material/styles';
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles'
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip'
+
+// Test Data
+import test_cardData from './_TestData_/cardData'
 
 const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -30,7 +30,7 @@ export default function CardContent(props) {
     const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
 
     // Loading data variable
-    const [isLoadingCardData, setisLoadingCardData] = useState(true); 
+    const [isLoadingCardData, setisLoadingCardData] = useState(true);
     //Select Category in Card
     const [activeCategory, setActiveCategory] = useState('Crypto');
     function selectCategory(category) {
@@ -55,7 +55,6 @@ export default function CardContent(props) {
       },1000)
 
     }, [activeCategory, isLoadingCardData])
-
     
     const cardDataMapping = isLoadingCardData
       ? Array.from({ length: 4 }, (_, index) => (
@@ -75,7 +74,7 @@ export default function CardContent(props) {
             <div className='label'>
               <img src={res.thumb} alt='Coin Image'/>
               <LightTooltip title={res.name}>
-                <p className={textColor_1}>{res.name} <span>PHP</span></p>
+                <p className={textColor_1}>{res.name} <span>USD</span></p>
               </LightTooltip>
             </div>
             <p className={`totalPrice ${textColor_1}`}>{res.symbol}</p>

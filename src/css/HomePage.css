@@ -248,13 +248,16 @@
     width: calc(25% - 40px);
 }
 .marketMainContent .marketContent .tableHeader .col4{
-    width: calc(20% - 40px);
+    width: calc(15% - 40px);
 }
 .marketMainContent .marketContent .tableHeader .col5{
     width: calc(10% - 40px);
 }
+.marketMainContent .marketContent .tableHeader .col5 span{
+    white-space: nowrap;
+}
 .marketMainContent .marketContent .tableHeader .col6{
-    width: calc(20% - 40px);
+    width: calc(25% - 40px);
 }
 .marketMainContent .marketContent .tableHeader .col7{
     width: calc(15% - 40px);
@@ -267,7 +270,7 @@
     display: flex;
     width: 100%;
     border-bottom: 1px solid #d4d4d4;
-    min-height: 90px;
+    min-height: 80px;
 }
 .marketMainContent .marketContent .tableBody .row .col{
     display: flex;
@@ -308,9 +311,10 @@
     font-weight: 500;
     color: #949393;
     font-size: 1rem;
+    text-transform: uppercase;
 }
 .marketMainContent .marketContent .tableBody .row .col4{
-    width: calc(20% - 40px);
+    width: calc(15% - 40px);
 }
 .marketMainContent .marketContent .tableBody .row .col5{
     width: calc(10% - 40px);
@@ -319,13 +323,19 @@
     color: #58bd7d;
     font-weight: 400;
 }
+.marketMainContent .marketContent .tableBody .row .col5 .low24{
+    color: #d33535;
+}
+.marketMainContent .marketContent .tableBody .row .col5 .high24{
+    color: #58bd7d;
+}
 .marketMainContent .marketContent .tableBody .row .col6{
-    width: calc(20% - 40px);
+    width: calc(25% - 40px);
 }
 .marketMainContent .marketContent .tableBody .row .col7{
     width: calc(15% - 40px);
 }
-.marketMainContent .marketContent .tableBody .row .col1 #star{
+.marketMainContent .marketContent .tableBody .row .col1 .favoriteIcon{
     display: none;
 }
 .marketMainContent .marketContent .tableBody .row .col1 label svg {
@@ -336,7 +346,7 @@
     stroke-width: 1.3px;
     cursor: pointer;
 }
-.marketMainContent .marketContent .tableBody .row .col1 #star:checked + label svg {
+.marketMainContent .marketContent .tableBody .row .col1 .favoriteIcon:checked + label svg {
     fill: #FFC107;
     stroke: #FFC107;
     animation: pop_42 0.5s ease-out;
@@ -372,6 +382,21 @@
     .homePageContainer .container .heroDetails .title{
         font-size: 2.5rem;
     }
+
+    .marketMainContent .marketContent .tableHeader .col5,
+    .marketMainContent .marketContent .tableBody .row .col5{
+        display: none;
+    }
+
+    .marketMainContent .marketContent .tableHeader .col4,
+    .marketMainContent .marketContent .tableBody .row .col4{
+        width: calc(20% - 40px);
+    }
+
+    .marketMainContent .marketContent .tableHeader .col7,
+    .marketMainContent .marketContent .tableBody .row .col7{
+        width: calc(20% - 40px);
+    }
 }
 @media screen and (max-width: 1001px) {
     .homePageContainer{
@@ -397,12 +422,73 @@
         width: 400px;
     }
 }
+
+@media screen and (max-width: 851px) {
+    .marketMainContent .marketContent .tableHeader .col6,
+    .marketMainContent .marketContent .tableBody .row .col6{
+        display: none;
+    }
+
+    .marketMainContent .marketContent .tableHeader .col1,
+    .marketMainContent .marketContent .tableBody .row .col1{
+        width: calc(10% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col2,
+    .marketMainContent .marketContent .tableBody .row .col2{
+        width: calc(10% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col3,
+    .marketMainContent .marketContent .tableBody .row .col3{
+        width: calc(30% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col4,
+    .marketMainContent .marketContent .tableBody .row .col4{
+        width: calc(25% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col7,
+    .marketMainContent .marketContent .tableBody .row .col7{
+        width: calc(25% - 40px);
+    }   
+}
+
+@media screen and (max-width: 671px) {
+    .marketMainContent .marketContent .tableHeader .col7,
+    .marketMainContent .marketContent .tableBody .row .col7{
+        display: none;
+    }   
+    .marketMainContent .marketContent .tableHeader .col3,
+    .marketMainContent .marketContent .tableBody .row .col3{
+        width: calc(50% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col4,
+    .marketMainContent .marketContent .tableBody .row .col4{
+        width: calc(30% - 40px);
+    } 
+}
+
 @media screen and (max-width: 551px) {
     .homePageContainer{
         padding-top: 70px;
     }
     .homePageContainer .container img{
         width: 70%;
+    }
+
+    .marketMainContent .marketContent .tableHeader .col4,
+    .marketMainContent .marketContent .tableBody .row .col4{
+        display: none;
+    } 
+    .marketMainContent .marketContent .tableHeader .col1,
+    .marketMainContent .marketContent .tableBody .row .col1{
+        width: calc(15% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col2,
+    .marketMainContent .marketContent .tableBody .row .col2{
+        width: calc(15% - 40px);
+    }
+    .marketMainContent .marketContent .tableHeader .col3,
+    .marketMainContent .marketContent .tableBody .row .col3{
+        width: calc(70% - 40px);
     }
 }
 @media screen and (max-width: 401px) {
