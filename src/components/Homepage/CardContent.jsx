@@ -40,19 +40,19 @@ export default function CardContent(props) {
 
     const [cardData, setCardData] = useState(null);  
     const loadCardData = async () =>{
-      // const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`)
-      // setCardData(result.data.coins)
-      // setisLoadingCardData(false)
-
-      const result = test_cardData
-      setCardData(result.coins)
+      const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`)
+      setCardData(result.data.coins)
       setisLoadingCardData(false)
+
+      // const result = test_cardData
+      // setCardData(result.coins)
+      // setisLoadingCardData(false)
     };
     useEffect(() => {
       // Remove mo to pag real data na
-      setTimeout(()=>{
+      // setTimeout(()=>{
         loadCardData();
-      },1000)
+      // },1000)
 
     }, [activeCategory, isLoadingCardData])
     

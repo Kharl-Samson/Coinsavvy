@@ -64,19 +64,20 @@ export default function MarketContent(props) {
 
     const [marketData, setMarketData] = useState(null);  
     const loadMarketData = async () =>{
-      // const result = await axios.get(`https://api.coingecko.com/api/v3/search?query=${activeCategory}`)
-      // setMarketData(result.data.coins)
-      // setisLoadingMarketData(false)
-
-      const result = test_marketData
-      setMarketData(result)
+      const result = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=10&page=1&sparkline=true&price_change_percentage=7d')
+      setMarketData(result.data)
+      console.log(result)
       setisLoadingMarketData(false)
+
+    //   const result = test_marketData
+    //   setMarketData(result)
+    //   setisLoadingMarketData(false)
     };
     useEffect(() => {
       // Remove mo to pag real data na
-      setTimeout(()=>{
+    //   setTimeout(()=>{
         loadMarketData();
-      },1000)
+    //   },1000)
 
     }, [isLoadingMarketData])
 
