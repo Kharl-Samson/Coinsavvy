@@ -4,6 +4,7 @@ import HeroContent from './HeroContent';
 import CardContent from './CardContent';
 import Navbar from '../Navbar'
 import MarketContent from './MarketContent';
+import HowItWorksContent from './HowItWorksContent';
 
 
 export default function Homepage(props) {
@@ -29,6 +30,10 @@ export default function Homepage(props) {
         isCheckedTheme = {props.isCheckedTheme}
       />
 
+      {/* How It Works Content */}
+      <HowItWorksContent
+        isCheckedTheme = {props.isCheckedTheme}
+      />
     </>
   )
 }

@@ -103,8 +103,8 @@ export default function CardContent(props) {
             <p className={`totalPrice ${textColor_1}`}>{res.symbol}</p>
             <div className='subDetails'>
               <span>{res.api_symbol}</span>
-              <LightTooltip title={`Rank no.${res.market_cap_rank}`}>
-              <div className='percentage'>{res.market_cap_rank}</div>
+              <LightTooltip title={`Rank no.${res.market_cap_rank ? res.market_cap_rank : "N/A"}`}>
+              <div className='percentage'>{res.market_cap_rank ? res.market_cap_rank : "N/A"}</div>
               </LightTooltip>
             </div>
           </div>

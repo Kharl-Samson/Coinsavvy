@@ -99,6 +99,25 @@ export default function MarketContent(props) {
     }, [isLoadingMarketData])
 
 
+    //Adding to favorite
+    const [checkboxes, setCheckboxes] = useState([]);
+    useEffect(() => {
+      // Load checkboxes state from local storage when the component mounts
+      const storedCheckboxes = JSON.parse(localStorage.getItem('selectedCheckboxes'));
+      if (storedCheckboxes) {
+        setCheckboxes(storedCheckboxes);
+      }
+    }, []);
+  
+    const handleCheckboxClick = (index) => {
+      // Update the state of the clicked checkbox
+      const newCheckboxes = [...checkboxes];
+      newCheckboxes[index] = !newCheckboxes[index];
+      setCheckboxes(newCheckboxes);
+      // Save the updated state to local storage
+      localStorage.setItem('selectedCheckboxes', JSON.stringify(newCheckboxes));
+    }; 
+
     const marketDataMapping = isLoadingMarketData
     ? Array.from({ length: 10 }, (_, index) => (
         <div className='row' style={{display: 'flex',alignItems:'center'}} key={index}>
@@ -125,7 +144,7 @@ export default function MarketContent(props) {
         return (
             <div className='row' key={index}>
                 <div className='col col1'>
-                    <input type="checkbox" id={`star${index}`} className='favoriteIcon'/>
+                    <input type="checkbox" id={`star${index}`} className='favoriteIcon' checked={checkboxes[index]} onChange={() => handleCheckboxClick(index)} />
                     <LightTooltip title="Add to favorite">
                         <label htmlFor={`star${index}`}>
                           <svg viewBox="0 0 24 24">

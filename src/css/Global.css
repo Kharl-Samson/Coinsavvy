@@ -376,6 +376,8 @@ nav .content .menuBar .container input:checked + .checkmark span:nth-child(3) {
     opacity: 0;
 }
 
+
+
 /* Theme Toggle For Smaller Devices */
 .themeToggleSmallDevice{
     display: none;
