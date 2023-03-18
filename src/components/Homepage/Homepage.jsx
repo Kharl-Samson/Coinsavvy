@@ -5,6 +5,8 @@ import CardContent from './CardContent';
 import Navbar from '../Navbar'
 import MarketContent from './MarketContent';
 import HowItWorksContent from './HowItWorksContent';
+import WhatIsCoinsavvyContent from './WhatIsCoinsavvyContent';
+import PromotionContent from './PromotionContent';
 
 
 export default function Homepage(props) {
@@ -32,6 +34,16 @@ export default function Homepage(props) {
 
       {/* How It Works Content */}
       <HowItWorksContent
+        isCheckedTheme = {props.isCheckedTheme}
+      />
+
+      {/* What Is Coinsavvy Content */}
+      <WhatIsCoinsavvyContent
+        isCheckedTheme = {props.isCheckedTheme}
+      />
+
+      {/* Promotion Content */}
+      <PromotionContent
         isCheckedTheme = {props.isCheckedTheme}
       />
     </>

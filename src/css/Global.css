@@ -19,7 +19,7 @@ button:hover{
 
 /* Navigation Bar */
 nav{
-    z-index: 1;
+    z-index: 2;
     position: sticky;
     top: 0;
     background-color: #ffff;
@@ -43,7 +43,7 @@ nav .content .logoContainer{
 nav .content .logoContainer img{
     height: 25px;
     width: auto;
-    margin-right: 10px;
+    margin-right: 9px;
 }
 nav .content .logoContainer p{
     font-family: 'Titillium Web', sans-serif;
