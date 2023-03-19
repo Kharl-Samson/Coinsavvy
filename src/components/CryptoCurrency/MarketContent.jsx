@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from 'react'
 
-// MUI Tooltip
-import { styled } from '@mui/material/styles';
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
-
 //Chart Js
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
@@ -18,34 +14,17 @@ import Skeleton from '@mui/material/Skeleton';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-// Navigate 
-import { useNavigate } from "react-router-dom";
+// MUI Pagination
+import Pagination from '@mui/material/Pagination';
 
 // Test Data
 import test_marketData from './_TestData_/marketData';
 
-const LightTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.white,
-      color: 'rgba(0, 0, 0, 0.87)',
-      boxShadow: theme.shadows[1],
-      fontSize: 11,
-    },
-  }));
-
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
-
+  
 export default function MarketContent(props) {
-    // Navigate Function
-    let navigate = useNavigate();
-    function CryptoCurrency(){
-        navigate(`/CryptoCurrency`);
-    }
-
     // Theme Color Setter
     const background_1 = props.isCheckedTheme ? "darkBG1" : "lightBG1"
     const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
@@ -61,6 +40,12 @@ export default function MarketContent(props) {
       }
       setOpenSnackbar(false);
     };
+
+    // Pagination
+    const [page, setPage] = useState(1)
+    const handlePage = (event, value) => {
+        setPage(value)
+    } 
 
     //Chart settings
     const options = {
@@ -91,7 +76,7 @@ export default function MarketContent(props) {
     const loadMarketData = async () => {
         try {
             closeSnackbar()
-            const result = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=10&page=1&sparkline=true&price_change_percentage=7d');
+            const result = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=20&page=${page}&sparkline=true&price_change_percentage=7d`);
             setMarketData(result.data);
             setisLoadingMarketData(false);
         } 
@@ -105,30 +90,10 @@ export default function MarketContent(props) {
 
     useEffect(() => {
         loadMarketData();
-    }, [isLoadingMarketData])
-
-
-    //Adding to favorite
-    const [checkboxes, setCheckboxes] = useState([]);
-    useEffect(() => {
-      // Load checkboxes state from local storage when the component mounts
-      const storedCheckboxes = JSON.parse(localStorage.getItem('selectedCheckboxes'));
-      if (storedCheckboxes) {
-        setCheckboxes(storedCheckboxes);
-      }
-    }, []);
-  
-    const handleCheckboxClick = (index) => {
-      // Update the state of the clicked checkbox
-      const newCheckboxes = [...checkboxes];
-      newCheckboxes[index] = !newCheckboxes[index];
-      setCheckboxes(newCheckboxes);
-      // Save the updated state to local storage
-      localStorage.setItem('selectedCheckboxes', JSON.stringify(newCheckboxes));
-    }; 
+    }, [page,isLoadingMarketData])
 
     const marketDataMapping = isLoadingMarketData
-    ? Array.from({ length: 10 }, (_, index) => (
+    ? Array.from({ length: 20 }, (_, index) => (
         <div className='row' style={{display: 'flex',alignItems:'center'}} key={index}>
           <Skeleton animation="wave" height={60} width={'100%'}/>
         </div>
@@ -151,14 +116,6 @@ export default function MarketContent(props) {
         return (
             <div className='row' key={index}>
                 <div className='col col1'>
-                    <input type="checkbox" id={`star${index}`} className='favoriteIcon' checked={checkboxes[index]} onChange={() => handleCheckboxClick(index)} />
-                    <LightTooltip title="Add to favorite">
-                        <label htmlFor={`star${index}`}>
-                          <svg viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                          </svg>
-                        </label>
-                    </LightTooltip>
                 </div>
                 <div className='col col2'>
                     <span className={textColor_1}>{res.market_cap_rank}</span>
@@ -205,11 +162,10 @@ export default function MarketContent(props) {
   : null;
 
   return (
-    <div className={`marketMainContent ${background_1}`}>
+    <div className={`marketMainContent ${background_1}`} style={{marginTop: '70px'}}>
         <div className='marketContent everyContainerWidth'>
             <div className='headerContainer'>
                 <p className={`title ${textColor_1}`}>Market Update</p>
-                <p className={`seeAll ${textColor_1}`} onClick={CryptoCurrency}>See All Coins</p>
             </div>
 
             {/* Table Header */}
@@ -225,7 +181,11 @@ export default function MarketContent(props) {
             {/* Table Body */}
             <div className='tableBody'>
                     {marketDataMapping}
-            </div>     
+            </div> 
+
+            <div className='pagination'>
+                <Pagination count={50} onChange={handlePage} shape="rounded" className='paginationContent' size="large" color="primary"/>   
+            </div>  
         </div>
 
         {/* Snackbar */}

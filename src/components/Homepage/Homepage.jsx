@@ -7,14 +7,17 @@ import MarketContent from './MarketContent';
 import HowItWorksContent from './HowItWorksContent';
 import WhatIsCoinsavvyContent from './WhatIsCoinsavvyContent';
 import PromotionContent from './PromotionContent';
+import Footer from '../Footer';
 
 
 export default function Homepage(props) {
   return (
     <>
+      {/* Navbar Content */}
       <Navbar
         theme_toggle = {props.theme_toggle}
         isCheckedTheme = {props.isCheckedTheme}
+        activePage = {'HomePage'}
       />
 
       {/* Hero Content */}
@@ -44,6 +47,11 @@ export default function Homepage(props) {
 
       {/* Promotion Content */}
       <PromotionContent
+        isCheckedTheme = {props.isCheckedTheme}
+      />
+
+      {/* Footer */}
+      <Footer
         isCheckedTheme = {props.isCheckedTheme}
       />
     </>

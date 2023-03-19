@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import logoImg from "../assets/images/mainLogo.svg"
+import logoImg from "../assets/images/mainLogo.png"
 import searchIcon from "../assets/images/searchIcon.svg"
 import avatar from "../assets/images/avatar.svg"
 
@@ -11,6 +11,8 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+// Navigate 
+import { useNavigate } from "react-router-dom";
 
 const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -24,6 +26,15 @@ const LightTooltip = styled(({ className, ...props }) => (
 }));
 
 export default function Navbar(props) {
+  // Navigate Function
+  let navigate = useNavigate();
+  function goToHome(){
+    navigate(`/`);
+  }
+  function CryptoCurrency(){
+    navigate(`/CryptoCurrency`);
+  }
+
   const themeTitleTip = props.isCheckedTheme ? "Enable Light Mode" : "Enable Dark Mode"
 
   // Theme Color Setter
@@ -64,13 +75,10 @@ export default function Navbar(props) {
 
             {/* Link Container */}
             <div className='linkContainer'>
-              <div className='link linkActive'>
-                <span>Homepage</span>
+              <div className={`link ${props.activePage === 'HomePage' ? 'linkActive' : textColor_1}`} onClick={goToHome}>
+                <span>Home</span>
               </div>
-              <div className={`link ${textColor_1}`}>
-                <span>About</span>
-              </div>
-              <div className={`link ${textColor_1}`}>
+              <div className={`link ${props.activePage === 'CryptoCurrencyPage' ? 'linkActive' : textColor_1}`} onClick={CryptoCurrency}>
                 <span>Crypto Currency</span>
               </div>
             </div>
@@ -179,9 +187,6 @@ export default function Navbar(props) {
           >
             <MenuItem onClick={handleClose} className={textColor_1}>
                Home
-            </MenuItem>
-            <MenuItem onClick={handleClose} className={textColor_1}>
-               About
             </MenuItem>
             <MenuItem onClick={handleClose} className={textColor_1}>
                Crypto Currency

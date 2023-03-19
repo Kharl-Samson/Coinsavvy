@@ -2,7 +2,7 @@ import React from 'react'
 import heroImage from "../../assets/images/heroImage.png"
 
 export default function HeroContent(props) {
-    // Theme Color Setter
+  // Theme Color Setter
   const background_2 = props.isCheckedTheme ? "darkBG2" : "lightBG2"
   const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
 
@@ -13,9 +13,11 @@ export default function HeroContent(props) {
             <p className={`title ${textColor_1}`}>Empowering your financial future with cryptocurrency</p>
             <p className='description'>Discover the future of finance with our comprehensive crypto currency platform, offering cutting-edge technology and expert insights.</p>
             <button>
+              <a href='#HowItWorks'>
               <span className="transition"></span>
               <span className="gradient"></span>
               <span className="label">Learn More</span>
+              </a>
             </button>
           </div>
 

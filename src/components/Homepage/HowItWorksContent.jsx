@@ -10,7 +10,7 @@ export default function HowItWorksContent(props) {
   const textColor_1 = props.isCheckedTheme ? "darkText1" : "lightText1"
 
   return (
-    <div className={`howItWorksMainContainer ${background_2}`}>
+    <div className={`howItWorksMainContainer ${background_2}`} id="HowItWorks">
         <div className='howItWorksContent everyContainerWidth'>
             <p className={`title ${textColor_1}`}>How It Work</p>
             <p className='description'>Cryptocurrency is a digital payment system that doesn't rely on banks to verify transactions.</p>

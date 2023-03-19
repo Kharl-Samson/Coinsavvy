@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import Homepage from './components/Homepage/Homepage';
+import CryptoCurrency from './components/CryptoCurrency/CryptoCurrencyPage';
+import Homepage from './components/Homepage/HomePage';
 import "./css/Global.css"
 
+// React Router
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   const [isCheckedTheme, setisCheckedTheme] = useState(false);
@@ -21,10 +24,27 @@ function App() {
 
   return (
     <div className="App">
-        <Homepage
-            theme_toggle = {theme_toggle}
-            isCheckedTheme = {isCheckedTheme}
-        />
+        <Routes>
+            <Route 
+              path="/" 
+              element={
+                <Homepage
+                  theme_toggle = {theme_toggle}
+                  isCheckedTheme = {isCheckedTheme}
+                />
+              }
+            />
+
+            <Route 
+              path="/CryptoCurrency" 
+              element={
+                <CryptoCurrency
+                  theme_toggle = {theme_toggle}
+                  isCheckedTheme = {isCheckedTheme}
+                />
+              }
+            />
+        </Routes>
     </div>
   )
 }

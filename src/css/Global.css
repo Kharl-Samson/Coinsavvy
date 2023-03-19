@@ -377,6 +377,77 @@ nav .content .menuBar .container input:checked + .checkmark span:nth-child(3) {
 }
 
 
+/* Footer */
+.footer_container{
+    width: 100%;
+    height: auto;
+    padding: 70px 0;
+    overflow: hidden;
+    border-top: 2px solid #3772FF;
+}
+.footer_container .top{
+    margin: 0% auto;
+    max-width: 75%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.footer_container .logo{
+    display: flex;
+    align-items: center;
+}
+.footer_container .logo img{
+    height: 30px;
+    width: auto;
+    margin-right: 9px;
+}
+.footer_container .logo p{
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    color: #3772FF;
+}
+.footer_container .logo span{
+    color: #252831;
+}
+.footer_container .info .info_content{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.footer_container .info .info_content p{
+    font-size: 1rem;
+    max-width: 400px;
+    color: #9A9A9A;
+    text-align: center;
+}
+.footer_container .footer .footer_nav{
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    border-bottom: 2px solid #d4d4d4;
+    padding: 10px 20px;
+}
+.footer_container .footer .footer_nav a{
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.footer_container .footer .footer_nav a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.footer_container .footer p{
+    margin-top: 5px;
+    color: #9A9A9A;
+    font-size: 1rem;
+    text-align: center;
+}
+
 
 /* Theme Toggle For Smaller Devices */
 .themeToggleSmallDevice{
@@ -445,6 +516,11 @@ nav .content .menuBar .container input:checked + .checkmark span:nth-child(3) {
 }
 @media screen and (max-width: 1251px) {
     .everyContainerWidth{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1201px) {
+    .footer_container .contact_content{
         width: 90%;
     }
 }

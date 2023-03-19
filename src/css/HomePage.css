@@ -30,15 +30,18 @@
 }
 .homePageContainer .container .heroDetails button{
     margin-top: 30px;
-    font-size: 1rem;
     padding: 12px 40px;
     background: #3772FF;
-    color: #ffff;
     border: none;
     position: relative;
     overflow: hidden;
     border-radius: 30px;
 }  
+.homePageContainer .container .heroDetails button a{
+    color: #ffff;
+    font-size: 1rem;
+    text-decoration: none;
+}
 .homePageContainer .container .heroDetails .gradient{
     position: absolute;
     width: 100%;
@@ -513,15 +516,18 @@
     display: flex;
 }
 .whatIsCoinsavvyContainer .whatIsCoinsavvyContent .descriptionContainer button{
-    font-size: 1rem;
     padding: 12px 40px;
     background: #3772FF;
-    color: #ffff;
     border: none;
     position: relative;
     overflow: hidden;
     border-radius: 30px;
 }  
+.whatIsCoinsavvyContainer .whatIsCoinsavvyContent .descriptionContainer button a{
+    color: #ffff;
+    font-size: 1rem;
+    text-decoration: none;
+}
 .whatIsCoinsavvyContainer .whatIsCoinsavvyContent .descriptionContainer .gradient{
     position: absolute;
     width: 100%;
@@ -656,6 +662,10 @@
     }
     .promotionContainer .promotionContent .sliderContainer img{
         width: 400px;
+    }
+
+    .promotionContainer .promotionContent .descriptionContainer .subTitleDescription{
+        margin-left: 30px;
     }
 }
 @media screen and (max-width: 1051px) {

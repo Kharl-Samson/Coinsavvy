@@ -3,7 +3,7 @@ import slider1 from "../../assets/images/slider1.png"
 import slider2 from "../../assets/images/slider2.png"
 import slider3 from "../../assets/images/slider3.png"
 import slider4 from "../../assets/images/slider4.png"
-import checkIcon from "../../assets/images/checkIcon.svg"
+import checkIcon from "../../assets/images/checkIcon.png"
 
 // AOS Library
 import AOS from "aos"
@@ -87,9 +87,11 @@ export default function WhatIsCoinsavvyContent(props) {
 
               <div className='btnContainer'>
                 <button>
+                  <a href='#promotion'>
                   <span className="transition"></span>
                   <span className="gradient"></span>
                   <span className="label">Explore More</span>
+                  </a>
                 </button>
               </div>
 

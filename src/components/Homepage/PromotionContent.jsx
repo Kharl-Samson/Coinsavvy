@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import checkIcon from "../../assets/images/checkIcon.svg"
+import checkIcon from "../../assets/images/checkIcon.png"
 import phonePromotion from "../../assets/images/phonePromotion.png"
 
 // AOS Library
@@ -18,7 +18,7 @@ export default function PromotionContent(props) {
   }, []);
     
   return (
-    <div className={`promotionContainer ${background_2}`}>
+    <div className={`promotionContainer ${background_2}`} id='promotion'>
         <div className='promotionContent everyContainerWidth'>
 
 
