@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import CryptoCurrency from './components/CryptoCurrency/CryptoCurrencyPage';
-import Homepage from './components/Homepage/HomePage';
+import HomePage from './components/Homepage/HomePage';
 import "./css/Global.css"
 
 // React Router
@@ -28,7 +28,7 @@ function App() {
             <Route 
               path="/" 
               element={
-                <Homepage
+                <HomePage
                   theme_toggle = {theme_toggle}
                   isCheckedTheme = {isCheckedTheme}
                 />

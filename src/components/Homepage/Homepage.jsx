@@ -10,7 +10,7 @@ import PromotionContent from './PromotionContent';
 import Footer from '../Footer';
 
 
-export default function Homepage(props) {
+export default function HomePage(props) {
   return (
     <>
       {/* Navbar Content */}
