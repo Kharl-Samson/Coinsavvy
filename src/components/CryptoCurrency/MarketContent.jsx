@@ -162,7 +162,7 @@ export default function MarketContent(props) {
   : null;
 
   return (
-    <div className={`marketMainContent ${background_1}`} style={{marginTop: '70px'}}>
+    <div className={`marketMainContent ${background_1}`} style={{paddingTop: '70px'}}>
         <div className='marketContent everyContainerWidth'>
             <div className='headerContainer'>
                 <p className={`title ${textColor_1}`}>Market Update</p>
