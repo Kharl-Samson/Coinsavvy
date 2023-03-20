@@ -32,7 +32,7 @@ export default function Navbar(props) {
     navigate(`/`);
   }
   function CryptoCurrency(){
-    navigate(`/CryptoCurrency`);
+    navigate(`/CryptoCurrencyPage`);
   }
 
   const themeTitleTip = props.isCheckedTheme ? "Enable Light Mode" : "Enable Dark Mode"

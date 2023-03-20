@@ -36,7 +36,7 @@ function App() {
             />
 
             <Route 
-              path="/CryptoCurrency" 
+              path="/CryptoCurrencyPage" 
               element={
                 <CryptoCurrency
                   theme_toggle = {theme_toggle}

@@ -14,7 +14,7 @@ export default function HeroContent(props) {
   const loadMarketCap = async () => {
       try {
           const result = await axios.get('https://api.coingecko.com/api/v3/global');
-          setMarketCap(result.data.data.total_market_cap.usd);
+          setMarketCap(result.data.data.total_market_cap.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).slice(0, -3));
       } 
       catch (error) {
         setMarketCap("$1.86T")
@@ -32,7 +32,7 @@ export default function HeroContent(props) {
             <p className={`title ${textColor_1}`}>Today’s Cryptocurrency prices</p>
             <p className='description'>The global crypto market cap is &nbsp; 
                 <span className={textColor_1}>
-                {marketCap ? marketCap.toLocaleString('en-US', { style: 'currency', currency: 'USD' }).slice(0, -3) : "$1.86T"}   
+                {marketCap ? marketCap : "$1.86T"}   
                 </span>
             </p>
           </div>
