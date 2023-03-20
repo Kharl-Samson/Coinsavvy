@@ -185,10 +185,10 @@ export default function Navbar(props) {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
-            <MenuItem onClick={handleClose} className={textColor_1}>
+            <MenuItem onClick={goToHome} className={textColor_1}>
                Home
             </MenuItem>
-            <MenuItem onClick={handleClose} className={textColor_1}>
+            <MenuItem onClick={CryptoCurrency} className={textColor_1}>
                Crypto Currency
             </MenuItem>
             <MenuItem> 

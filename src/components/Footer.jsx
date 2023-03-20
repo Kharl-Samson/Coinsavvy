@@ -35,8 +35,8 @@ export default function Footer(props) {
 
         <div className="footer">
             <div className="footer_nav">
-                <a href="#" className={textColor_1} onClick={goToHome}>Home</a>
-                <a href="#" className={textColor_1} onClick={CryptoCurrency}>Crypto Currency</a>
+                <a href="" className={textColor_1} onClick={goToHome}>Home</a>
+                <a href="" className={textColor_1} onClick={CryptoCurrency}>Crypto Currency</a>
             </div>
             <p>Coinsavvy by Kharl © {(new Date().getFullYear())}</p>
         </div>
