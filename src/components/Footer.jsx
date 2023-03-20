@@ -11,7 +11,7 @@ export default function Footer(props) {
     navigate(`/`);
   }
   function CryptoCurrency(){
-    navigate(`/CryptoCurrencyPage`);
+    navigate(``/CryptoCurrency`);
   }
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../css/CryptoCurrencyPage.css"
+import "../../css`/CryptoCurrency.css"
 import Footer from '../Footer'
 import HeroContent from './HeroContent'
 import Navbar from '../Navbar'

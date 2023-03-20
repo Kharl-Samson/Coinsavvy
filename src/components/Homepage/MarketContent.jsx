@@ -43,7 +43,7 @@ export default function MarketContent(props) {
     // Navigate Function
     let navigate = useNavigate();
     function CryptoCurrency(){
-        navigate(`/CryptoCurrencyPage`);
+        navigate(``/CryptoCurrency`);
     }
 
     // Theme Color Setter
