@@ -432,12 +432,12 @@ nav .content .menuBar .container input:checked + .checkmark span:nth-child(3) {
     border-bottom: 2px solid #d4d4d4;
     padding: 10px 20px;
 }
-.footer_container .footer .footer_nav a{
+.footer_container .footer .footer_nav p{
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
 }
-.footer_container .footer .footer_nav a:hover{
+.footer_container .footer .footer_nav p:hover{
     cursor: pointer;
     text-decoration: underline;
 }
