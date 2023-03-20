@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import CryptoCurrency from './components/CryptoCurrency`/CryptoCurrency';
+import CryptoCurrency from './components/CryptoCurrency/CryptoCurrencyPage';
 import Homepage from './components/Homepage/Homepage';
 import "./css/Global.css"
 
@@ -36,7 +36,7 @@ function App() {
             />
 
             <Route 
-              path="`/CryptoCurrency" 
+              path="/CryptoCurrency" 
               element={
                 <CryptoCurrency
                   theme_toggle = {theme_toggle}
