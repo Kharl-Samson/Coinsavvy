@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import logoImg from "../assets/images/mainLogo.png"
-import searchIcon from "../assets/images/searchIcon.svg"
 import avatar from "../assets/images/avatar.svg"
 
 // MUI Tooltip
@@ -86,17 +85,6 @@ export default function Navbar(props) {
         
         {/* Nav Content Right Part */}
         <div className='content contentRight'>
-          {/* Search Container */}
-          <div className='searchContainer'>
-            <div className='searchBox'>
-              <div className='searchIcon'>
-                <img src={searchIcon} alt="Search Icon"/>
-              </div>
-              <input type="text"/>
-            </div>
-            <button>Search</button>
-          </div>
-
           {/* Theme Toggle Container */}
           <div className='themeToggle'>
             <LightTooltip title={themeTitleTip}>

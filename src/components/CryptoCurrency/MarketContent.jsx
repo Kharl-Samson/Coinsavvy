@@ -45,6 +45,7 @@ export default function MarketContent(props) {
     const [page, setPage] = useState(1)
     const handlePage = (event, value) => {
         setPage(value)
+        setisLoadingMarketData(true)
     } 
 
     //Chart settings
@@ -89,12 +90,14 @@ export default function MarketContent(props) {
     };
 
     useEffect(() => {
-        loadMarketData();
+        setTimeout(()=>{
+            loadMarketData();
+        },500)
     }, [page,isLoadingMarketData])
 
     const marketDataMapping = isLoadingMarketData
     ? Array.from({ length: 20 }, (_, index) => (
-        <div className='row' style={{display: 'flex',alignItems:'center'}} key={index}>
+        <div className='row' style={{display: 'flex',alignItems:'center',borderBottom : 'none',minHeight:'0px'}} key={index}>
           <Skeleton animation="wave" height={60} width={'100%'}/>
         </div>
       ))
@@ -114,28 +117,26 @@ export default function MarketContent(props) {
         })
     
         return (
-            <div className='row' key={index}>
-                <div className='col col1'>
-                </div>
-                <div className='col col2'>
+            <div className='row' key={index} style={{borderBottom : 'none',minHeight:'0px'}}>
+                <div className='col col2' style={{flexGrow: '1',padding: '5px 20px'}}>
                     <span className={textColor_1}>{res.market_cap_rank}</span>
                 </div>
-                <div className='col col3'>
+                <div className='col col3' style={{padding: '5px 20px'}}>
                     <div className='nameDetails'>
                         <img src={res.image} alt='Coin Image'/>
                         <p className={textColor_1}>{res.name} <span>{res.symbol}</span></p>
                     </div>
                 </div>
-                <div className='col col4'>
+                <div className='col col4' style={{padding: '5px 20px'}}>
                     <span className={textColor_1}>{currentPrice}</span>
                 </div>
-                <div className='col col5'>
+                <div className='col col5' style={{padding: '5px 20px'}}>
                     <span className={percentage24 < 0 ? "low24" : "high24"}>{percentage24 < 0 ? "" : "+"}{percentage24}%</span>
                 </div>
-                <div className='col col6'>
+                <div className='col col6' style={{padding: '5px 20px'}}>
                     <span className={textColor_1}>{marketCap.slice(0, -3)}</span>
                 </div>
-                <div className='col col7'>
+                <div className='col col7' style={{padding: '5px 20px'}}>
                     <div style={{width:"70%", height:"100%"}}>
                         <Line 
                             data={
@@ -170,8 +171,7 @@ export default function MarketContent(props) {
 
             {/* Table Header */}
             <div className='tableHeader'>
-                <div className='col col1'></div>
-                <div className='col col2'><span>#</span></div>
+                <div className='col col2' style={{flexGrow: '1'}}><span>#</span></div>
                 <div className='col col3'><span>Name</span></div>
                 <div className='col col4'><span>Last Price</span></div>
                 <div className='col col5'><span>24h %</span></div>
@@ -184,7 +184,7 @@ export default function MarketContent(props) {
             </div> 
 
             <div className='pagination'>
-                <Pagination count={50} onChange={handlePage} shape="rounded" className='paginationContent' size="large" color="primary"/>   
+                <Pagination count={50} onChange={handlePage} shape="rounded" className='paginationContent' size="large"/>   
             </div>  
         </div>
 
