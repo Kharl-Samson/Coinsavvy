@@ -79,7 +79,7 @@ export default function MarketContent(props) {
             closeSnackbar()
             const result = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=20&page=${page}&sparkline=true&price_change_percentage=7d`);
             setMarketData(result.data);
-            setisLoadingMarketData(false);
+            setisLoadingMarketData(false)
         } 
         catch (error) {
             showSnackbar()
@@ -90,14 +90,12 @@ export default function MarketContent(props) {
     };
 
     useEffect(() => {
-        setTimeout(()=>{
-            loadMarketData();
-        },500)
+        loadMarketData();
     }, [page,isLoadingMarketData])
 
     const marketDataMapping = isLoadingMarketData
     ? Array.from({ length: 20 }, (_, index) => (
-        <div className='row' style={{display: 'flex',alignItems:'center',borderBottom : 'none',minHeight:'0px'}} key={index}>
+        <div className='row' style={{display: 'flex',alignItems:'center'}} key={index}>
           <Skeleton animation="wave" height={60} width={'100%'}/>
         </div>
       ))
@@ -117,27 +115,27 @@ export default function MarketContent(props) {
         })
     
         return (
-            <div className='row' key={index} style={{borderBottom : 'none',minHeight:'0px'}}>
-                <div className='col col2' style={{flexGrow: '1',padding: '5px 20px'}}>
+            <div className='row' key={index}>
+                <div className='col col2' style={{padding:'0px 20px'}}>
                     <span className={textColor_1}>{res.market_cap_rank}</span>
                 </div>
-                <div className='col col3' style={{padding: '5px 20px'}}>
+                <div className='col col3' style={{padding:'0px 20px'}}>
                     <div className='nameDetails'>
                         <img src={res.image} alt='Coin Image'/>
                         <p className={textColor_1}>{res.name} <span>{res.symbol}</span></p>
                     </div>
                 </div>
-                <div className='col col4' style={{padding: '5px 20px'}}>
+                <div className='col col4' style={{padding:'0px 20px'}}>
                     <span className={textColor_1}>{currentPrice}</span>
                 </div>
-                <div className='col col5' style={{padding: '5px 20px'}}>
+                <div className='col col5' style={{padding:'0px 20px'}}>
                     <span className={percentage24 < 0 ? "low24" : "high24"}>{percentage24 < 0 ? "" : "+"}{percentage24}%</span>
                 </div>
-                <div className='col col6' style={{padding: '5px 20px'}}>
+                <div className='col col6' style={{padding:'0px 20px'}}>
                     <span className={textColor_1}>{marketCap.slice(0, -3)}</span>
                 </div>
-                <div className='col col7' style={{padding: '5px 20px'}}>
-                    <div style={{width:"70%", height:"100%"}}>
+                <div className='col col7' style={{padding:'0px 20px',flexGrow: '1'}}>
+                    <div style={{width:"70%",height:'70px',overflow:'hidden', display:'flex',alignItems:'center',justifyContent:'flex-start'}}>
                         <Line 
                             data={
                                 {
@@ -171,12 +169,12 @@ export default function MarketContent(props) {
 
             {/* Table Header */}
             <div className='tableHeader'>
-                <div className='col col2' style={{flexGrow: '1'}}><span>#</span></div>
+                <div className='col col2'><span>#</span></div>
                 <div className='col col3'><span>Name</span></div>
                 <div className='col col4'><span>Last Price</span></div>
                 <div className='col col5'><span>24h %</span></div>
                 <div className='col col6'><span>Market Cap</span></div>
-                <div className='col col7'><span>Last 7 Days</span></div>
+                <div className='col col7' style={{flexGrow: '1'}}><span>Last 7 Days</span></div>
             </div>
             {/* Table Body */}
             <div className='tableBody'>

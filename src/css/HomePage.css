@@ -306,10 +306,11 @@
     font-weight: 600;
     text-transform: capitalize;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 5px;
 }
 .marketMainContent .marketContent .tableBody .row .col3 .nameDetails p span{
-    margin-left: 10px;
     font-weight: 500;
     color: #949393;
     font-size: 1rem;
@@ -854,6 +855,9 @@
     }
     .promotionContainer .promotionContent .sliderContainer img{
         width: 80%;
+    }
+    .marketMainContent .marketContent .tableBody .row .col3 .nameDetails p span{
+        margin-left: 0;
     }
 
 }
